@@ -1,21 +1,42 @@
 # MarketImmune Core V1
 
-MarketImmune Core V1 is an open-source benchmark and safety layer for detecting unsafe
-autonomous trading-agent behavior in crypto exchange microstructure.
+MarketImmune is a research-grade benchmark and safety framework for identifying harmful or
+unsafe autonomous trading-agent behavior in crypto exchange microstructure.
 
-V1 uses real Binance USD-M Futures public market data as market background and synthetic
-agent order-lifecycle events for controlled labels. It does not perform live trading,
-identify real private accounts, or claim price-prediction alpha.
+The project combines:
 
-## Current Status
+- Real Binance USD-M Futures public market background data.
+- Synthetic, labeled agent order-lifecycle events for controlled evaluation.
+- Deterministic replay and scenario generation.
+- Feature extraction and rule-based safety baselines.
+- A benchmark suite and temporal-model baselines for early-warning and harm estimation tasks.
 
-This repository currently implements roadmap phases 1-3:
+It does not perform live trading, identify private users/accounts, or claim alpha/prediction
+edge for deployment.
 
-- Phase 1: professional Python package foundation, local CI commands, linting, type checks, and tests.
-- Phase 2: Binance public-data URL builders, downloader primitives, local parsers, WebSocket collector skeleton,
-  checksums, and coverage reports.
-- Phase 3: canonical Pydantic schemas, deterministic event IDs, Parquet round trips, DuckDB-compatible lake files,
-  and content-hashed dataset manifests.
+## What We Accomplished
+
+This repository now contains implemented and validated work through phases 1-9.
+
+- Phase 1-3 foundation: package quality gates, schemas, event IDs, Parquet/lake/manifests, and CI.
+- Phase 4 replay engine: deterministic, invariant-checked replay with generated replay reports.
+- Phase 5 scenario and labeling system: benign and risky agent families, deterministic synthetic scenarios,
+  and label/manifests.
+- Phase 6 feature and policy baseline: multi-window feature store and RuleEngine baseline reports.
+- Phase 7 AegisBench v0: train/validation/test splits, task metrics, JSON/Markdown reports, and leaderboard CSV.
+- Phase 8 Order-MTPP baseline: variable-length temporal model pipeline with benchmarked latency and quality.
+- Phase 9 Order-S2P2 baseline: neural Hawkes (CT-LSTM style) implementation with OOD metrics and comparison artifacts.
+
+## Current Evidence And Reports
+
+Project proof and metrics are included in the repository:
+
+- `reports/phase_1_3_proof.md`
+- `reports/phase4_6_proof.md`
+- `reports/phase7_9_proof.md`
+- `reports/phase4_6_metrics.json`
+- `reports/phase7_9_metrics.json`
+- Phase outputs under `reports/phase4` through `reports/phase9`
 
 ## Quickstart
 
@@ -29,6 +50,13 @@ On systems with GNU Make:
 ```bash
 make install
 make ci
+```
+
+Additional phase runners:
+
+```powershell
+.\make.ps1 phase46
+.\make.ps1 phase79
 ```
 
 ## Scope Rules

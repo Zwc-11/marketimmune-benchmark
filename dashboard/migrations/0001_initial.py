@@ -14,7 +14,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='BenchmarkMetrics',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True, primary_key=True,
+                    serialize=False, verbose_name='ID',
+                )),
                 ('phase', models.IntegerField(unique=True)),
                 ('title', models.CharField(max_length=200)),
                 ('data', models.JSONField(default=dict)),
@@ -29,8 +32,18 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ModelMetric',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('model_name', models.CharField(choices=[('rule_engine', 'RuleEngine Baseline'), ('gru_mtpp', 'GRU-MTPP'), ('s2p2_nhp', 'S2P2 (Neural Hawkes)')], max_length=50)),
+                ('id', models.BigAutoField(
+                    auto_created=True, primary_key=True,
+                    serialize=False, verbose_name='ID',
+                )),
+                ('model_name', models.CharField(
+                    choices=[
+                        ('rule_engine', 'RuleEngine Baseline'),
+                        ('gru_mtpp', 'GRU-MTPP'),
+                        ('s2p2_nhp', 'S2P2 (Neural Hawkes)'),
+                    ],
+                    max_length=50,
+                )),
                 ('task_name', models.CharField(max_length=50)),
                 ('pr_auc', models.FloatField()),
                 ('auroc', models.FloatField(blank=True, null=True)),
@@ -48,7 +61,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ProjectStats',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(
+                    auto_created=True, primary_key=True,
+                    serialize=False, verbose_name='ID',
+                )),
                 ('total_examples', models.IntegerField()),
                 ('total_tasks', models.IntegerField()),
                 ('total_phases', models.IntegerField()),
@@ -67,8 +83,21 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='TaskMetric',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('task_name', models.CharField(choices=[('event_detection', 'Event Detection'), ('session_classification', 'Session Classification'), ('early_warning', 'Early Warning'), ('harm_estimation', 'Harm Estimation'), ('action_selection', 'Action Selection'), ('ood_detection', 'OOD Detection')], max_length=50)),
+                ('id', models.BigAutoField(
+                    auto_created=True, primary_key=True,
+                    serialize=False, verbose_name='ID',
+                )),
+                ('task_name', models.CharField(
+                    choices=[
+                        ('event_detection', 'Event Detection'),
+                        ('session_classification', 'Session Classification'),
+                        ('early_warning', 'Early Warning'),
+                        ('harm_estimation', 'Harm Estimation'),
+                        ('action_selection', 'Action Selection'),
+                        ('ood_detection', 'OOD Detection'),
+                    ],
+                    max_length=50,
+                )),
                 ('pr_auc', models.FloatField(blank=True, null=True)),
                 ('auroc', models.FloatField(blank=True, null=True)),
                 ('f1_score', models.FloatField(blank=True, null=True)),
